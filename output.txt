@@ -1,0 +1,2 @@
+Accuracy = 99.999 % (131071/131072)[bytes]
+Total time = 27.700 [s]

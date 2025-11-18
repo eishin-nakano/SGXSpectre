@@ -1,0 +1,26 @@
+# --- vcpkg 関連 ---
+vcpkg/
+vcpkg_installed/
+packages/
+buildtrees/
+downloads/
+build/
+
+# --- バイナリ ---
+*.o
+*.so
+*.signed.so
+*.a
+sgxspectre
+util
+
+# --- CMake のゴミ（あれば） ---
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# --- 一時ファイル ---
+*.log
+*.tmp
+*~
+
