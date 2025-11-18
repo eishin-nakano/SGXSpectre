@@ -25,6 +25,9 @@ extern int ret;
     void readCiphertext(const char *fname, uint64_t dest[][N]);
     void outputResult(double read_byte[10], int cnt, int runcnt, double accr, std::string strfname, int len, int mode);
 
+    std::string generate_timestamp_filename(const std::string &prefix, const std::string &ext);
+    void dump_result_csv_timestamp(const uint8_t *result, int finished_byte);
+
 #ifdef __cplusplus
 }
 #endif

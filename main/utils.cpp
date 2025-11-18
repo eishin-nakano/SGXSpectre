@@ -86,3 +86,67 @@ void outputResult(double *read_byte, int cnt, int runcnt, double accr, string st
     outputfile << accr << "\n";
     outputfile.close();
 }
+
+static void ensure_directory(const std::string &path) {
+    struct stat st{};
+    if (stat(path.c_str(), &st) == -1) {
+        mkdir(path.c_str(), 0755);
+    }
+}
+
+std::string generate_timestamp_filename(const std::string &prefix,
+                                        const std::string &ext) {
+    using namespace std::chrono;
+
+    auto now = system_clock::now();
+    auto ms  = duration_cast<milliseconds>(now.time_since_epoch()) % 1000;
+
+    std::time_t t = system_clock::to_time_t(now);
+    std::tm local_tm = *std::localtime(&t);
+
+    char buf[256];
+    std::sprintf(
+        buf,
+        "%s_%04d%02d%02d_%02d%02d%02d_%03lld.%s",
+        prefix.c_str(),
+        local_tm.tm_year + 1900,
+        local_tm.tm_mon + 1,
+        local_tm.tm_mday,
+        local_tm.tm_hour,
+        local_tm.tm_min,
+        local_tm.tm_sec,
+        static_cast<long long>(ms.count()),
+        ext.c_str()
+    );
+
+    return std::string(buf);
+}
+
+void dump_result_csv_timestamp(const uint8_t *result, int finished_byte) {
+    // 出力ディレクトリ
+    std::string dir = "results/leaked_key";
+
+    // ディレクトリ作成（存在していてもOK）
+    ensure_directory("results");
+    ensure_directory(dir);
+
+    // ファイル名を生成
+    std::string filename =
+        dir + "/" + generate_timestamp_filename("leaked_key", "csv");
+
+    FILE *fp = std::fopen(filename.c_str(), "w");
+    if (!fp) {
+        std::perror("fopen");
+        return;
+    }
+
+    // CSV header
+    std::fprintf(fp, "index,guessed_byte\n");
+
+    for (int i = 0; i < finished_byte; i++) {
+        std::fprintf(fp, "%d,%u\n", i, (unsigned int)result[i]);
+    }
+
+    std::fclose(fp);
+    std::printf("Saved CSV: %s\n", filename.c_str());
+}
