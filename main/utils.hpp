@@ -8,8 +8,8 @@ extern "C" {
 #include <stdint.h>
 #include <string>
 
-#define N 16384    //64KiB: 8192, 128KiB: 16384,  256KiB: 32768
-#define LEN 131072		//64KiB: 65536, 128KiB: 131072,	256KiB: 262144
+#define N 8192    //64KiB: 8192, 128KiB: 16384,  256KiB: 32768
+#define LEN 65536		//64KiB: 65536, 128KiB: 131072,	256KiB: 262144
 extern int ret;
 
 #define SGX_ASSERT(f)  { if ( 0 != (ret = (f)) )                \
