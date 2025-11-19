@@ -148,7 +148,7 @@ void dump_result_csv_timestamp(const uint8_t *result, const uint64_t *secretKey,
 //     std::fprintf(fp, "index,guessed_byte\n");
 
     for (int i = 0; i < finished_byte; i++) {
-        std::fprintf(fp, "%02X, %02X\n", secretKey[i], result[i]);
+        std::fprintf(fp, "%02X, %02X\n", (unsigned int) secretKey[i], result[i]);
     }
 
     std::fclose(fp);
