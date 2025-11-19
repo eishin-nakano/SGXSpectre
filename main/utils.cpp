@@ -91,7 +91,7 @@ void outputResult(double *read_byte, int cnt, int runcnt, double accr, string st
     outputfile.close();
 }
 
-static void ensure_directory(const std::string &path) {
+// static void ensure_directory(const std::string &path) {
 //     struct stat st{};
 //     if (stat(path.c_str(), &st) == -1) {
 //         mkdir(path.c_str(), 0755);
@@ -126,7 +126,7 @@ static void ensure_directory(const std::string &path) {
 //     return std::string(buf);
 // }
 
-// void dump_result_csv_timestamp(const uint8_t *result, int finished_byte) {
+void dump_result_csv_timestamp(const uint8_t *result, int finished_byte) {
 //     // 出力ディレクトリ
 //     std::string dir = "results/leaked_key";
 
