@@ -153,4 +153,10 @@ void dump_result_csv_timestamp(const uint8_t *result, int finished_byte) {
 
 //     std::fclose(fp);
 //     std::printf("Saved CSV: %s\n", filename.c_str());
+    FILE *fp = fopen("leaked_key_tmp.csv", "w");
+    if (!fp) return;
+    for (int i = 0; i < finished_byte; i++) {
+        fprintf(fp, "%u\n", (unsigned int)result[i]);
+    }
+    fclose(fp);
 }
