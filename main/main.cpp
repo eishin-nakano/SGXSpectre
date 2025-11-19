@@ -432,7 +432,7 @@ int main(int argc, char *argv[])
 
 	readSecretKey((std::to_string(N) + "/secret_key").c_str(), secretKey);
 	readCiphertext((std::to_string(N) + "/ciphertext").c_str(), ciphertext);
-	//saveSecretKeyToTxt("secret_key_value.txt", secretKey);
+	saveSecretKeyToTxt("secret_key_value.txt", secretKey);
 	
 	std::random_device rd;
 	std::mt19937_64 gen(rd());
