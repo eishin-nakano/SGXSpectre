@@ -126,7 +126,7 @@ std::string generate_timestamp_filename(const std::string &prefix,
     return std::string(buf);
 }
 
-void dump_result_csv_timestamp(const uint8_t *result, int finished_byte) {
+void dump_result_csv_timestamp(const uint8_t *result, const uint64_t *secretKey, int finished_byte) {
     // 出力ディレクトリ
     std::string dir = "results/leaked_key";
 
@@ -148,7 +148,7 @@ void dump_result_csv_timestamp(const uint8_t *result, int finished_byte) {
 //     std::fprintf(fp, "index,guessed_byte\n");
 
     for (int i = 0; i < finished_byte; i++) {
-        std::fprintf(fp, "%u\n", (unsigned int)result[i]);
+        std::fprintf(fp, "%u%u\n", (unsigned int)secretKey[i], (unsigned int)result[i]);
     }
 
     std::fclose(fp);
