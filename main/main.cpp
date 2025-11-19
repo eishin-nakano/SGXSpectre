@@ -432,12 +432,12 @@ int main(int argc, char *argv[])
 
 	readSecretKey((std::to_string(N) + "/secret_key").c_str(), secretKey);
 	readCiphertext((std::to_string(N) + "/ciphertext").c_str(), ciphertext);
-	saveSecretKeyToTxt("secret_key_value.txt", secretKey);
+	// saveSecretKeyToTxt("secret_key_value.txt", secretKey);
 	
 	std::random_device rd;
-	std::mt19937_64 gen(rd());
+	// std::mt19937_64 gen(rd());
 	std::uniform_int_distribution<uint64_t> dist(0, UINT64_MAX);
-	for (size_t i = 0; i < N; ++i) secretKey[i] = dist(gen);
+	// for (size_t i = 0; i < N; ++i) secretKey[i] = dist(gen);
 
 	
 	SGX_ASSERT(ecall_load_key(global_eid, secretKey));
