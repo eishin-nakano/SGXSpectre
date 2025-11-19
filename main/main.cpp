@@ -169,7 +169,7 @@ mix_i = ((i * 167) + 13) & 255;
 			//std::this_thread::sleep_for(std::chrono::nanoseconds(1)); //成功
 			//printf("B\n");
 			//fprintf(stderr, "%ld\n",time2);//追加 成功
-			fprintf(stderr, "A\n");
+			// fprintf(stderr, "A\n");
 			//if (time2 <= CACHE_HIT_THRESHOLD)
 			if (time2 <= CACHE_HIT_THRESHOLD && mix_i != array1dupe[tries % array1_size])
 			{
