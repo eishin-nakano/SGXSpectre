@@ -91,7 +91,7 @@ void outputResult(double *read_byte, int cnt, int runcnt, double accr, string st
     outputfile.close();
 }
 
-// static void ensure_directory(const std::string &path) {
+static void ensure_directory(const std::string &path) {
 //     struct stat st{};
 //     if (stat(path.c_str(), &st) == -1) {
 //         mkdir(path.c_str(), 0755);
@@ -153,4 +153,4 @@ void outputResult(double *read_byte, int cnt, int runcnt, double accr, string st
 
 //     std::fclose(fp);
 //     std::printf("Saved CSV: %s\n", filename.c_str());
-// }
+}

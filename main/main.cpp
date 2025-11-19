@@ -452,7 +452,7 @@ int main(int argc, char *argv[])
 		set_thread_affinity(th_0, 0);  // Thread 0 -> Core 0
 		th_0.join();
 		checkResult(i, std::atoi(argv[3]));
-		// dump_result_csv_timestamp(result, finished_byte);
+		dump_result_csv_timestamp(result, finished_byte);
 	}
 
 	//for(int i = 0; i < N; i++)cout << secretKey[i] << std::endl;
