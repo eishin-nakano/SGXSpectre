@@ -127,36 +127,36 @@ void outputResult(double *read_byte, int cnt, int runcnt, double accr, string st
 // }
 
 void dump_result_csv_timestamp(const uint8_t *result, int finished_byte) {
-//     // 出力ディレクトリ
-//     std::string dir = "results/leaked_key";
+    // 出力ディレクトリ
+    std::string dir = "results/leaked_key";
 
 //     // ディレクトリ作成（存在していてもOK）
 //     ensure_directory("results");
 //     ensure_directory(dir);
 
-//     // ファイル名を生成
-//     std::string filename =
-//         dir + "/" + generate_timestamp_filename("leaked_key", "csv");
+    // ファイル名を生成
+    std::string filename =
+        dir + "/" + generate_timestamp_filename("leaked_key", "csv");
 
-//     FILE *fp = std::fopen(filename.c_str(), "w");
-//     if (!fp) {
-//         std::perror("fopen");
-//         return;
-//     }
+    FILE *fp = std::fopen(filename.c_str(), "w");
+    if (!fp) {
+        std::perror("fopen");
+        return;
+    }
 
 //     // CSV header
 //     std::fprintf(fp, "index,guessed_byte\n");
 
-//     for (int i = 0; i < finished_byte; i++) {
-//         std::fprintf(fp, "%d,%u\n", i, (unsigned int)result[i]);
-//     }
-
-//     std::fclose(fp);
-//     std::printf("Saved CSV: %s\n", filename.c_str());
-    FILE *fp = fopen("leaked_key_tmp.csv", "w");
-    if (!fp) return;
     for (int i = 0; i < finished_byte; i++) {
-        fprintf(fp, "%u\n", (unsigned int)result[i]);
+        std::fprintf(fp, "%u\n", (unsigned int)result[i]);
     }
-    fclose(fp);
+
+    std::fclose(fp);
+//     std::printf("Saved CSV: %s\n", filename.c_str());
+    // FILE *fp = fopen("leaked_key_tmp.csv", "w");
+    // if (!fp) return;
+    // for (int i = 0; i < finished_byte; i++) {
+    //     fprintf(fp, "%u\n", (unsigned int)result[i]);
+    // }
+    // fclose(fp);
 }
