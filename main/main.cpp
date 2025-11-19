@@ -309,8 +309,7 @@ void checkResult(int cnt, int runcnt) {
 	for(int i = 0; i < finished_byte; i++) {
 		//if(result[i] == sk[8*N-i-1]) count++;
 		if(result[i] == sk[i]) count++;
-		//else
-		printf("missed : i = %d, sk = %02X, result = %02X\n", i, sk[i], result[i]);
+		//else printf("missed : i = %d, sk = %02X, result = %02X\n", i, sk[i], result[i]);
 	}
 	//printf("BBB\n");
 
